@@ -1,0 +1,48 @@
+#:include kv/settings.kv
+#:import add_corners kivymd.utils.cropimage.add_corners
+
+NavigationLayout:
+    ScreenManager:
+        id: sc
+        Screen:
+            name: 'screen1'
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: 'Reviser App'
+                    left_action_items: [['menu', lambda x: drawer.set_state('open')]]
+
+                FloatLayout:
+                    Topic:
+                        pos_hint: {'center_y':.5, 'center_x':.5}
+                        size_hint: .5, .5
+                        radius: [20, 20, 20, 20]
+                        on_release:
+                            app.change_screen('screen2')
+                        
+                        FitImage:
+                            source: 'images/iot.jpg'
+                
+                    AddWidgetButton:
+                        pos_hint: {'top':.15, 'right':.9}
+                        icon: 'plus'
+                        md_bg_color: app.theme_cls.primary_color
+
+        Screen:
+            name: 'screen2'   
+            BoxLayout:
+                
+                orientation: 'vertical'
+                
+                FitImage:
+                    size_hint_y: 3
+                    source: 'images/iot.jpg'
+                    
+                FitImage:
+                    size_hint_y: 1
+                    source: 'images/iot.jpg'
+    
+    MDNavigationDrawer:
+        id: drawer
+
